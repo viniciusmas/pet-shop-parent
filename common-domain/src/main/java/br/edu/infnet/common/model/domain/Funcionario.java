@@ -1,7 +1,7 @@
 package br.edu.infnet.common.model.domain;
 
-import br.edu.infnet.petshopapi.model.dto.FuncionarioRequestDTO;
-import br.edu.infnet.petshopapi.model.dto.FuncionarioResponseDTO;
+import br.edu.infnet.common.model.dto.FuncionarioRequestDTO;
+import br.edu.infnet.common.model.dto.FuncionarioResponseDTO;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;

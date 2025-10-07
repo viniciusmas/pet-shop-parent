@@ -1,5 +1,7 @@
 package br.edu.infnet.common.model.domain;
 
+import br.edu.infnet.common.model.dto.ClienteRequestDTO;
+import br.edu.infnet.common.model.dto.ClienteResponseDTO;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -7,7 +9,6 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;

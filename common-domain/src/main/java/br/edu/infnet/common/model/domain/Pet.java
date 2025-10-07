@@ -1,7 +1,7 @@
 package br.edu.infnet.common.model.domain;
 
-import br.edu.infnet.petshopapi.model.dto.PetRequestDTO;
-import br.edu.infnet.petshopapi.model.dto.PetResponseDTO;
+import br.edu.infnet.common.model.dto.PetRequestDTO;
+import br.edu.infnet.common.model.dto.PetResponseDTO;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;

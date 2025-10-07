@@ -1,6 +1,6 @@
 package br.edu.infnet.common.model.domain;
 
-import br.edu.infnet.petshopapi.model.dto.AgendamentoRequestDTO;
+import br.edu.infnet.common.model.dto.AgendamentoRequestDTO;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

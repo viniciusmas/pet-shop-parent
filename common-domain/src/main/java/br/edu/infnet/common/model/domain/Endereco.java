@@ -1,8 +1,8 @@
 package br.edu.infnet.common.model.domain;
 
-import br.edu.infnet.petshopapi.model.dto.ClienteResponseDTO;
-import br.edu.infnet.petshopapi.model.dto.EnderecoRequestDTO;
-import br.edu.infnet.petshopapi.model.dto.FuncionarioResponseDTO;
+import br.edu.infnet.common.model.dto.ClienteResponseDTO;
+import br.edu.infnet.common.model.dto.EnderecoRequestDTO;
+import br.edu.infnet.common.model.dto.FuncionarioResponseDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
