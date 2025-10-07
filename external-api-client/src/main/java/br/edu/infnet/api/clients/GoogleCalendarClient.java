@@ -3,7 +3,6 @@ package br.edu.infnet.api.clients;
 import br.edu.infnet.api.config.GoogleFeignConfig;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.Map;
 
 @FeignClient(name = "googleCalendarClient", url = "https://www.googleapis.com/calendar/v3/calendars/primary/events", configuration = GoogleFeignConfig.class)
