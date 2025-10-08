@@ -4,9 +4,9 @@ import br.edu.infnet.api.clients.GoogleAuthClient;
 import br.edu.infnet.api.dto.GoogleTokenDTO;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import java.time.Instant;
-import java.util.HashMap;
-import java.util.Map;
 
 @Service
 public class GoogleTokenService {
@@ -38,11 +38,11 @@ public class GoogleTokenService {
     }
 
     private void renovarToken() {
-        Map<String, Object> params = new HashMap<>();
-        params.put("client_id", clientId);
-        params.put("client_secret", clientSecret);
-        params.put("refresh_token", refreshToken);
-        params.put("grant_type", "refresh_token");
+        MultiValueMap<String, Object> params = new LinkedMultiValueMap<>();
+        params.add("client_id", clientId);
+        params.add("client_secret", clientSecret);
+        params.add("refresh_token", refreshToken);
+        params.add("grant_type", "refresh_token");
 
         GoogleTokenDTO googleTokenDTO = googleAuthClient.getAccessToken(params);
 

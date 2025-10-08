@@ -33,4 +33,17 @@ public class PetResponseDTO {
         this.setPeso(pet.getPeso());
         this.setTutor(pet.getTutor());
     }
+
+    @Override
+    public String toString() {
+        return "PetResponseDTO{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", tipoEspecie=" + tipoEspecie +
+                ", raca='" + raca + '\'' +
+                ", idade=" + idade +
+                ", peso=" + peso +
+                ", tutor=" + tutor +
+                '}';
+    }
 }

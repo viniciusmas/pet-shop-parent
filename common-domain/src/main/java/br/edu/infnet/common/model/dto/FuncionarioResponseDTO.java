@@ -58,4 +58,24 @@ public class FuncionarioResponseDTO {
         this.setBonus(funcionario.getBonus());
         this.setCepConsulta(funcionario.getCepConsulta());
     }
+
+    @Override
+    public String toString() {
+        return "FuncionarioResponseDTO{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", cpf='" + cpf + '\'' +
+                ", rg='" + rg + '\'' +
+                ", dataNascimento=" + dataNascimento +
+                ", sexo='" + sexo + '\'' +
+                ", estadoCivil='" + estadoCivil + '\'' +
+                ", telefone='" + telefone + '\'' +
+                ", email='" + email + '\'' +
+                ", endereco=" + endereco +
+                ", cargo='" + cargo + '\'' +
+                ", salario=" + salario +
+                ", bonus=" + bonus +
+                ", cepConsulta='" + cepConsulta + '\'' +
+                '}';
+    }
 }

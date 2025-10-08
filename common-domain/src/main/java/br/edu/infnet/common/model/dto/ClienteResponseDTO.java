@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Setter
@@ -58,5 +59,23 @@ public class ClienteResponseDTO {
         this.setStatus(cliente.getStatus());
         this.setCepConsulta(cliente.getCepConsulta());
         this.setPets(cliente.getPets());
+    }
+
+    @Override
+    public String toString() {
+        return "ClienteResponseDTO{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", cpf='" + cpf + '\'' +
+                ", rg='" + rg + '\'' +
+                ", dataNascimento=" + dataNascimento +
+                ", sexo='" + sexo + '\'' +
+                ", estadoCivil='" + estadoCivil + '\'' +
+                ", telefone='" + telefone + '\'' +
+                ", email='" + email + '\'' +
+                ", clienteDeste=" + clienteDeste +
+                ", status=" + status +
+                ", endereco=" + endereco +
+                ", cepConsulta='" + cepConsulta + '}';
     }
 }
