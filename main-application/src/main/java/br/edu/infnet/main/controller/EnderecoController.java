@@ -3,6 +3,7 @@ package br.edu.infnet.main.controller;
 import br.edu.infnet.common.model.dto.EnderecoRequestDTO;
 import br.edu.infnet.main.model.service.ViaCepService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +20,7 @@ public class EnderecoController {
     }
 
     @GetMapping(value = "/{cep}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     public ResponseEntity<EnderecoRequestDTO> obterEndereco(@PathVariable("cep") String cep) {
         EnderecoRequestDTO enderecoRequestDTO = viaCepService.getEnderecoViaCep(cep);
         return ResponseEntity.ok(enderecoRequestDTO);
