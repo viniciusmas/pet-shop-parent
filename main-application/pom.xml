@@ -13,7 +13,7 @@
 	<artifactId>main-application</artifactId>
 	<name>main-application</name>
 	<description>Módulo da aplicação principal</description>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<dependencies>
 		<dependency>

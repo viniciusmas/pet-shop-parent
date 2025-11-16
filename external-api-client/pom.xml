@@ -13,7 +13,7 @@
 	<artifactId>external-api-client</artifactId>
 	<name>external-api-client</name>
 	<description>Módulo de cliente de APIs externas</description>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<dependencies>
 		<dependency>
