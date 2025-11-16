@@ -3,6 +3,7 @@ package br.edu.infnet.common.model.dto;
 import br.edu.infnet.common.model.domain.Cliente;
 import br.edu.infnet.common.model.domain.Endereco;
 import br.edu.infnet.common.model.domain.Pet;
+import br.edu.infnet.common.util.Util;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,7 +23,7 @@ public class ClienteResponseDTO {
 
     private String rg;
 
-    private LocalDateTime dataNascimento;
+    private String dataNascimento;
 
     private String sexo;
 
@@ -49,7 +50,7 @@ public class ClienteResponseDTO {
         this.setNome(cliente.getNome());
         this.setCpf(cliente.getCpf());
         this.setRg(cliente.getRg());
-        this.setDataNascimento(cliente.getDataNascimento());
+        this.setDataNascimento(Util.convertlocalDateTimeToString(cliente.getDataNascimento()));
         this.setSexo(cliente.getSexo());
         this.setEstadoCivil(cliente.getEstadoCivil());
         this.setTelefone(cliente.getTelefone());

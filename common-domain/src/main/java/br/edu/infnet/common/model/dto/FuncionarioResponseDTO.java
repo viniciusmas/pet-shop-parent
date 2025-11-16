@@ -2,6 +2,7 @@ package br.edu.infnet.common.model.dto;
 
 import br.edu.infnet.common.model.domain.Endereco;
 import br.edu.infnet.common.model.domain.Funcionario;
+import br.edu.infnet.common.util.Util;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,7 +21,7 @@ public class FuncionarioResponseDTO {
 
     private String rg;
 
-    private LocalDateTime dataNascimento;
+    private String dataNascimento;
 
     private String sexo;
 
@@ -47,7 +48,7 @@ public class FuncionarioResponseDTO {
         this.setNome(funcionario.getNome());
         this.setCpf(funcionario.getCpf());
         this.setRg(funcionario.getRg());
-        this.setDataNascimento(funcionario.getDataNascimento());
+        this.setDataNascimento(Util.convertlocalDateTimeToString(funcionario.getDataNascimento()));
         this.setSexo(funcionario.getSexo());
         this.setEstadoCivil(funcionario.getEstadoCivil());
         this.setTelefone(funcionario.getTelefone());

@@ -2,6 +2,7 @@ package br.edu.infnet.common.model.domain;
 
 import br.edu.infnet.common.model.dto.FuncionarioRequestDTO;
 import br.edu.infnet.common.model.dto.FuncionarioResponseDTO;
+import br.edu.infnet.common.util.Util;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -30,7 +31,7 @@ public class Funcionario extends Pessoa {
         this.setNome(funcionarioRequestDTO.getNome());
         this.setCpf(funcionarioRequestDTO.getCpf());
         this.setRg(funcionarioRequestDTO.getRg());
-        this.setDataNascimento(funcionarioRequestDTO.getDataNascimento());
+        this.setDataNascimento(Util.convertStingTolocalDateTime(funcionarioRequestDTO.getDataNascimento()));
         this.setSexo(funcionarioRequestDTO.getSexo());
         this.setEstadoCivil(funcionarioRequestDTO.getEstadoCivil());
         this.setTelefone(funcionarioRequestDTO.getTelefone());
@@ -46,7 +47,7 @@ public class Funcionario extends Pessoa {
         this.setNome(funcionarioResponseDTO.getNome());
         this.setCpf(funcionarioResponseDTO.getCpf());
         this.setRg(funcionarioResponseDTO.getRg());
-        this.setDataNascimento(funcionarioResponseDTO.getDataNascimento());
+        this.setDataNascimento(Util.convertStingTolocalDateTime(funcionarioResponseDTO.getDataNascimento()));
         this.setSexo(funcionarioResponseDTO.getSexo());
         this.setEstadoCivil(funcionarioResponseDTO.getEstadoCivil());
         this.setTelefone(funcionarioResponseDTO.getTelefone());

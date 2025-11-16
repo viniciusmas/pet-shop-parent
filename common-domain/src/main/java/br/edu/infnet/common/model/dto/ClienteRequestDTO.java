@@ -27,7 +27,7 @@ public class ClienteRequestDTO {
     @NotBlank(message = "O RG é obrigatório.")
     private String rg;
 
-    private LocalDateTime dataNascimento;
+    private String dataNascimento;
 
     @NotBlank(message = "O sexo é obrigatório.")
     private String sexo;

@@ -2,6 +2,7 @@ package br.edu.infnet.common.model.domain;
 
 import br.edu.infnet.common.model.dto.ClienteRequestDTO;
 import br.edu.infnet.common.model.dto.ClienteResponseDTO;
+import br.edu.infnet.common.util.Util;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -37,7 +38,7 @@ public class Cliente extends Pessoa {
         this.setNome(clienteRequestDTO.getNome());
         this.setCpf(clienteRequestDTO.getCpf());
         this.setRg(clienteRequestDTO.getRg());
-        this.setDataNascimento(clienteRequestDTO.getDataNascimento());
+        this.setDataNascimento(Util.convertStingTolocalDateTime(clienteRequestDTO.getDataNascimento()));
         this.setSexo(clienteRequestDTO.getSexo());
         this.setEstadoCivil(clienteRequestDTO.getEstadoCivil());
         this.setTelefone(clienteRequestDTO.getTelefone());
@@ -52,7 +53,7 @@ public class Cliente extends Pessoa {
         this.setNome(clienteResponseDTO.getNome());
         this.setCpf(clienteResponseDTO.getCpf());
         this.setRg(clienteResponseDTO.getRg());
-        this.setDataNascimento(clienteResponseDTO.getDataNascimento());
+        this.setDataNascimento(Util.convertStingTolocalDateTime(clienteResponseDTO.getDataNascimento()));
         this.setSexo(clienteResponseDTO.getSexo());
         this.setEstadoCivil(clienteResponseDTO.getEstadoCivil());
         this.setTelefone(clienteResponseDTO.getTelefone());
