@@ -6,10 +6,8 @@ import br.edu.infnet.common.model.domain.exceptions.ClienteInvalidoException;
 import br.edu.infnet.common.model.domain.exceptions.ClienteNaoEncontradoException;
 import br.edu.infnet.common.model.dto.ClienteResponseDTO;
 import br.edu.infnet.main.model.repository.ClienteRepository;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.server.ResponseStatusException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -121,7 +119,5 @@ public class ClienteService {
         if (cliente.getNome() == null || cliente.getNome().trim().isEmpty()) {
             throw new ClienteInvalidoException("O nome do cliente é uma informação obrigatória!");
         }
-
-        clienteRepository.findByCpf(cliente.getCpf()).ifPresent(c -> { throw new ResponseStatusException(HttpStatus.CONFLICT, "CPF já cadastrado."); });
     }
 }

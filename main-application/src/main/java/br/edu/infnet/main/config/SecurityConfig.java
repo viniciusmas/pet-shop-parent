@@ -16,6 +16,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
+
+import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -24,24 +29,58 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf(AbstractHttpConfigurer::disable).authorizeHttpRequests(
-                        authorize -> authorize.requestMatchers("/h2-console/**").permitAll()
-                                .requestMatchers(HttpMethod.GET, "/api/funcionarios").hasAnyRole("ADMIN", "USER")
-                                .requestMatchers(HttpMethod.POST, "/api/funcionarios").hasAnyRole("ADMIN")
-                                .requestMatchers(HttpMethod.PUT, "/api/funcionarios").hasAnyRole("ADMIN")
-                                .requestMatchers(HttpMethod.DELETE, "/comentarios/**").hasRole("ADMIN")
-                                .anyRequest().authenticated())
+        http
+                // Habilita CORS e desabilita CSRF
+                .cors(Customizer.withDefaults())
+                .csrf(AbstractHttpConfigurer::disable)
+
+                //Regras de autorização
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/h2-console/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/funcionarios").hasAnyRole("ADMIN", "USER")
+                        .requestMatchers(HttpMethod.POST, "/api/funcionarios").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT, "/api/funcionarios").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "/comentarios/**").hasRole("ADMIN")
+                        .anyRequest().authenticated()
+                )
+
+                //Autenticação básica
                 .httpBasic(Customizer.withDefaults());
 
+        // Necessário para o H2 console funcionar em frames
         http.headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable));
 
         return http.build();
     }
 
+    // ✅ Configuração global de CORS
+    @Bean
+    public CorsFilter corsFilter() {
+        CorsConfiguration config = new CorsConfiguration();
+        config.setAllowedOrigins(List.of("http://localhost:5173")); // origem do front-end (Vite)
+        config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        config.setAllowedHeaders(List.of("*"));
+        config.setAllowCredentials(true);
+
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", config);
+
+        return new CorsFilter(source);
+    }
+
     @Bean
     public UserDetailsService userDetailsService() {
-        UserDetails admin = User.builder().username("admin").password(passwordEncoder().encode("adminPass")).roles("ADMIN").build();
-        UserDetails user = User.builder().username("user").password(passwordEncoder().encode("userPass")).roles("USER").build();
+        UserDetails admin = User.builder()
+                .username("admin")
+                .password(passwordEncoder().encode("adminPass"))
+                .roles("ADMIN")
+                .build();
+
+        UserDetails user = User.builder()
+                .username("user")
+                .password(passwordEncoder().encode("userPass"))
+                .roles("USER")
+                .build();
 
         return new InMemoryUserDetailsManager(admin, user);
     }
