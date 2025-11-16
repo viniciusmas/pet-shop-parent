@@ -13,7 +13,7 @@
 	<artifactId>common-domain</artifactId>
 	<name>common-domain</name>
 	<description>Entidades comuns do projeto</description>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
 	<dependencies>
 		<dependency>
