@@ -57,7 +57,7 @@ public class SecurityConfig {
     @Bean
     public CorsFilter corsFilter() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(List.of("http://localhost:5173","https://geographical-sher-viniciusmas-db32d804.koyeb.app")); // origem do front-end (Vite)
+        config.setAllowedOrigins(List.of("http://localhost:5173","https://geographical-sher-viniciusmas-db32d804.koyeb.app","https://extreme-britni-viniciusmas-bf62f904.koyeb.app")); // origem do front-end (Vite)
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
         config.setAllowCredentials(true);
